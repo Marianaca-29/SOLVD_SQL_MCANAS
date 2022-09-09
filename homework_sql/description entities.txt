@@ -1,0 +1,40 @@
+--  MARIANA CAÑAS
+-- COMPUTER REPAIR SERVICE SHOP
+TASK:
+need to repair a computer, diagnostics and how much it will cost
+Make text description of your DB entities and relationship
+
+-- TABLES
+ 
+** computer_service_repair
+
+** invoice
+
+** customer
+
+** device
+
+** service_provided
+
+** payment_method
+
+** department
+
+** employees
+
+** order_status
+
+** order_repair
+
+** consumable
+
+** supply
+
+** product
+
+
+-- INTERMEDIATE TABLES
+
+customer_has_payment_method
+device_has_customer
+customer_has_invoice
