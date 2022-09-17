@@ -6,35 +6,69 @@ Make text description of your DB entities and relationship
 
 -- TABLES
  
-** computer_service_repair
+** company (1)
+DESCRIPTION: to add a new business and possible to open a new location, it's attriutes are: id, full_name and adress.
+RELATION1: to table service_provided, its main relation given it's the pourpose of the business.
+RELATION2: to table employees, it's the company that hires employees for certain positions.
+RELATION3: to table customer, is business that have it's customers.
 
-** invoice
+** invoice (2)
+DESCRIPTION: to create a new invoice when reparation process is completed. Attributes: invoice_date, description.
+RELATION1: to table order_repair, all data related to reparation is contained in mentioned table. 
+RELATION2: to table payment_method, when process is finished, customer must pay.
+ 
+** customer (3)
+DESCRIPTION:
+RELATION:
 
-** customer
+** device (4)
+DESCRIPTION:these are appliances that customer brings to the company to be fixed. To be able to differenciate one from another, it's been included atributtes: id, serial_number, brand, model, details (particular details, for example a scratch, or a ticker) and year model.
+RELATION: it's related to table ORDER_REPAIR given that when it's asked the reparation by customer it is when it starts the entire process.
 
-** device
 
-** service_provided
+** service_provided (5)
+DESCRIPTION: it's the core of the business, to provide services and to identify them the attributes are: id, detail, cost( it's difference, benefit: price - cost), price, service_date.
+RELATION: to table company, is the company that provides reparation services.
 
-** payment_method
+** payment_method (6)
+DESCRIPTION: related to many methods of payment such as: credit card, debit card, cash, and others. To have more details it's included: id, name, type (just to know and have many different types and companies providers:credit, debit, and visa, mastercard, etc) and also specific details. 
+RELATION1: it's connected with invoice, given that when a customer pays, will get an invoice. 
+RELATION2: related to intermediate table CUSTOMER_HAS_PAYMENT_METHOD and table customer stated a relationship many to many with payment_method table.
 
-** department
+** department (7)
+DESCRIPTION: positions of employees, attributes are: id, name and detail.
+RELATION: to table employee,to differenciate the sector that employees work at.
 
-** employees
+** employee (8)
+DESCRIPTION: to store all data related to personnel working in the company. Attributes are: full_name, social_security_number, address, phone_number, birth_date, start_date, end_date, active(if currently working).
+RELATION1: to table department, to differenciate the sector that employees work at.
+RELATION2: to table company, it's the company that hires employees for certain positions.
 
-** order_status
+** order_status (9)
+DESCRIPTION: to differenciate the status of a current order for repairing a device.
+RELATION:to table order_repair, given the status.
 
-** order_repair
+** order_repair (10)
+DESCRIPTION:
+RELATION:
 
-** consumable
+** consumable (11)
+DESCRIPTION:
+RELATION:
 
-** supply
+** supply (12)
+DESCRIPTION:
+RELATION:
 
-** product
-
+** product (13)
+DESCRIPTION: these are all products included in the same purchase, that it starts when costumer initiates the reparation or any other service required to the company and it's created a new order_repair.
+It's attributes are: id, details, price, cost( it's difference, benefit: price - cost), date_enter(when recepit), min_stock(minimun stock to re purchase), max_stock(maximum level of products available), current_stock(updated stock), other details. 
+RELATION1: to supply (given that the does not produce any product, just repairs and commercialize products without any transformation)
+RELATION2: to order_repair, particularly with the purchase as said that begins when a new order is created.  
 
 -- INTERMEDIATE TABLES
 
-customer_has_payment_method
-device_has_customer
-customer_has_invoice
+** customer_has_payment_method (14)
+DESCRIPTION:
+RELATION:
+
